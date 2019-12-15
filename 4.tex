@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\graphicspath{ {images/} }
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{fancyhdr}
+\usepackage[a4paper]{geometry}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Когомологии де Рама.}
+\theoremstyle{definition}
+\newtheorem{defn}{Def}
+\newtheorem{example}{Ex}
+ \newtheorem{theorem}{Th}
+ \DeclareMathOperator{\im}{im}
+\begin{document}
+\section*{Напоминания из прошлой лекции}
+\begin{example} Внешнее произведение форм $\omega = x^2 dx^1 \wedge dx^3 + dx^2 \wedge dx^4$ и $\eta = (x^1+1)dx^2 \wedge dx^4$
+\begin{multline*}
+\omega \wedge \eta = x^2 (x^1+1)dx^1 \wedge dx^3 \wedge dx^2 \wedge dx^4 + (x^1+1)dx^1\wedge dx^2 \wedge dx^2 \wedge dx^4 =\\=
+-x^2(x^1+1) dx^1 \wedge dx^2 \wedge dx^3 \wedge dx^4
+\end{multline*}
+\end{example}
+\begin{example}
+	Внешний дифференциал формы $\omega = (x^1+x^3 x^3) dx^1 \wedge dx^2$:
+	\begin{equation*}
+	d\omega = dx^1 \wedge dx^1 \wedge dx^2 + 2x^3 dx^3\wedge dx^1 \wedge dx^2 = 2x^3 dx^1\wedge dx^2 \wedge dx^3
+	\end{equation*}
+\end{example}
+\section*{Интегрирование форм}
+Параметризуем $k-$многообразие $\Omega_k \subset R^d$ с помощью $\tau^1, \dots, t^k:$
+\begin{gather}
+	\xi^1 = \xi^1(\tau^1, \dots, \tau^k)\\	
+	\dots \\
+	\xi^d = \xi^d(\tau^1, \dots, \tau^k)\\
+\end{gather}
+Для $\Omega_k$ при такой параметризации существует касательное пространство со следующим базисом:
+\begin{equation*}
+\mathbf{t}_i = \mathbf{i}_1 \frac{\partial \xi^1}{\partial \tau^i} + \dots + \mathbf{i}_d \frac{\partial \xi^d}{\partial \tau^i}
+\end{equation*}
+Вектор $\mathbf{t}_i$ - касательный к кривой на $\Omega_k$, полученный варьированием одного параметра $\tau_i$ при фиксированных остальных. Выбор порядка векторов определяет относительную(по отношению к исходному многообразию) ориентацию.
+\begin{defn}
+	\begin{equation}
+	\int_{\Omega_k}  \ ^{(k)} \omega = \int d \tau^1 \dots \int d \tau^k \omega(\mathbf{t}_1, \dots \mathbf{t}_k)
+	\end{equation}
+\end{defn}
+
+
+	
+	\begin{example}Рассмотрим 1-мерное многообразие $M$ вложенное в $\mathbb{R}^3$, параметризованное следующим образом:
+
+ $$M : (3t, t^2, 5-t), t \in [0;2]$$
+и заданную 1-форму: $\omega = 2x^2 dx^1 - x^1 x^3 dx^2 + dx^3$.
+	
+	Вычислим интеграл от этой формы по кривой:
+	
+	\begin{equation*}
+	\int_M \omega = \int_0^2 \begin{pmatrix} 3 \\ 2t \\ -1 \end{pmatrix} dt = \int_0^2 (2x^2\cdot 3 - x^1 x^3\cdot 2t - 1) dt = \int_0^2(6t^3-24t^2-1)dt
+	\end{equation*}
+\end{example}
+\begin{theorem}[Stockes]
+	\begin{equation}
+	\int_{\Omega_{p+1}} d(\ ^{(p)} \omega) = \int_{\partial\Omega_{p+1}} \ ^{(p)}\omega
+	\end{equation}
+\end{theorem}
+\begin{example}
+	Рассмотрим 2-многообразие $M$ вложенное в $\mathbb{R}^4$ следующим образом:	
+	\begin{gather}
+	M = (u^1, u^1 - u^2, 3 - u^1+u^1u^2, -3u^2)
+	u^1u^1+u^2+u^2<1
+	\end{gather}
+	
+Граница многообразия - кривая, описываемая одним параметром $t$. Граница параметризуется в $\mathbb{R}^4$ следующим образом:
+\begin{equation}
+	\partial M = (\cos t, \cos t - \sin t, 3 - \cos t+ \cos t \sin t, -3 \sin t)
+\end{equation}
+Рассмотрим форму $\omega$:
+\begin{gather}
+ \omega = x^3 x^3 dx^1
+ d \omega = -2x^2 dx^1 \wedge d x^3
+\end{gather}
+и убедимся в правильности теоремы Стокса. Начнём с вычисления интеграла по многообразию от дифференциала. Вычислим базис в касательном пространстве:
+\begin{equation}
+t_1=\begin{pmatrix} 1 \\ 1 \\ -1 + u_2 \\ 0\end{pmatrix} \hspace{1cm} t_2 = \begin{pmatrix}
+0\\ -1 \\ u_1 \\-3
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+dx^1 \wedge dx^3 (t_1, t_2) = det \begin{vmatrix} 1 & 0 \\ u^2-1 & u_1\end{vmatrix}
+\end{equation}
+
+\begin{equation}
+\int_M d \omega = \int_{-1}^{1} \int_{-\sqrt{1-u_1^2}}^{\sqrt{1+u_1^2}} -2(3-u_1+u_1u_2)u_1 du_2 du_1 = \frac{\pi}{2}
+\end{equation}
+С другой стороны, вычислим касательный вектор к кривой $\partial M$
+\begin{equation}
+m = \begin{pmatrix} -\sin t \\ -\sin t - \cos t \\ \sin t + \cos 2t \\ -3 cos t\end{pmatrix}
+\end{equation}
+Тогда вычисляя интеграл от формы по границе многообразия:
+
+\begin{equation}
+\int_{\partial M} \omega = \int_0^{2\pi} \omega(m) dt = \int_0^{2\pi} (3-\cos t + \cos t \sin t)^2 (-\sin t)dt = \frac{\pi}2
+\end{equation}
+\end{example}
+
+\end{document}

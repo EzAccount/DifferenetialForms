@@ -1,0 +1,431 @@
+ \documentclass{article}
+ \usepackage{amsmath,amsthm,amssymb}
+ \usepackage{mathtext}
+ \usepackage[T1,T2A]{fontenc}
+ \usepackage[utf8]{inputenc}
+ \usepackage[english,russian]{babel}
+ \usepackage{fancyhdr}
+ \usepackage[a4paper]{geometry}
+ \pagestyle{fancy}
+ \fancyhf{}
+ \newtheorem{defn}{Def}
+ \newtheorem{example}{Ex}
+ \newtheorem{theorem}{Th}
+ \DeclareMathOperator{\im}{im}
+ 
+ \begin{document}
+ 	
+ 	\subsection*{Литература}
+ 	Базовая:
+ 	\begin{itemize}
+ 		\item Зорич В. А., Математический анализ, Том II.
+ 		\item Арнольд В. И., Математические методы классической механики. 
+ 		\item  W. Rudin, Principles of mathematical analysis
+ 	\end{itemize}
+ 	Продвинутая:
+ 	\begin{itemize}
+ 		\item С. П. Новиков, И. А. Тайманов, Современные геометрические структуры и поля.
+ 		\item Картан А., Дифференциальное исчисление. Дифференциальные формы.
+ 		\item H. Flanders, Differential forms and applications to the physical sciences
+ 		\item M. Spivak, Calculus on manifolds
+ 		\item Bishop, R.; Goldberg, S. I. (1980), Tensor analysis on manifolds
+ 	\end{itemize}
+ 	\newpage
+ 	Множество G с заданной на нем бинарной операцией $*: G \times G \to G$ называется \textit{группой} $(G, *)$ если:
+ 	\begin{enumerate}
+ 		\item $\forall a,b,c \in G: a*(b*c) = (a*b)*c $
+ 		\item $\exists e \in G: \forall a \in G, a*e=e*a=a$
+ 		\item $\forall a \in G, \exists b\in G: a*b = e$
+ 	\end{enumerate}
+ 	{\centering
+ 		\section*{Листок - 1}}
+ 	\begin{enumerate}
+ 		\item Докажите, что матрицы вида  $\left(\begin{matrix}a & b\\ -b & a\end{matrix}\right) a,b \in \mathbb{R}$ образуют группу относительно стандартного умножения матриц ($c_{ij} = a_{ik} b_{kj}$).
+ 		\item Докажите, что множество векторов ВП образуют группу относительно сложения.
+ 		\item Докажите, что определитель кососимметричной матрицы нечетного размера равен нулю.
+ 		
+ 		\item Пусть C = $\left(\begin{matrix}A & X\\ 0 & B\end{matrix}\right) A,X, B \in \mathbb{R}^{n \times n}$. Докажите, что $\det С = \det A \det B$
+ 		
+ 		\item Докажите, что $\det \text{adj} A = (\det A)^{n-1}$ [adj - присоединенная матрица]
+ 		
+ 		\item Вычислите $\det A$, если
+ 		
+ 		a) $a_{ij} = \min(i,j)$
+ 		
+ 		b) $a_{ij} = \max(i,j)$ 
+ 		
+ 		\item Вычислите$ \begin{vmatrix}
+ 		1 & -1 &    &    & 0   \\
+ 		-1  & 1       & -1   &      &    \\
+ 		&       \ddots &           \ddots&     \ddots      &    \\
+ 		&         &           -1&          1 & -1\\
+ 		0  &         &           &          -1 & 1
+ 		\end{vmatrix}
+ 		$
+ 		
+ 		\item Вычислите $\partial_{ij} \det A$
+ 	\end{enumerate}
+ 	\newpage
+ 	\section{Некоторые напоминания о декартовой системе} Пусть $\{e_i\}$ - базис. Здесь и далее $(\cdot, \cdot), [\cdot, \cdot]$ - скалярное и векторное произведение соответственно, по повторяющимся индексам предполагается суммирование.
+ 	$$(e_i, e_j)=\delta_{ij}$$
+ 	$$[e_i, e_j] = \epsilon_{ijk}e_k$$
+ 	$$\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$$
+ 	$$V=e_i V^i_{(e_i)}$$
+ 	Индексная нотация может быть удобна, в частности, для доказательства некоторых утверждений векторного анализа:
+ 	\begin{align*}
+ 	[\mathbf{A}, [\mathbf{B},\mathbf{C}]] &= [e_i, [e_l, e_m]] A^i B^l C^m\\
+ 	&= [e_i, e_k] \epsilon_{klm} A^i B^l C^m \\
+ 	&= e_j \epsilon_{jik}\epsilon_{klm} A^i B^l C^m \\
+ 	&= e_j (\delta_{jl}\delta_{im} - \delta_{jm}\delta_{il}) A^i B^l C^m \\
+ 	&= \mathbf{B} (\mathbf{A}\cdot \mathbf{C}) - \mathbf{C} (\mathbf{A}\cdot \mathbf{B})\\
+ 	\end{align*}
+ 	\section{Криволинейные координаты}
+ 	Пусть заданы отображения: $x = x(\zeta_1, \zeta_2, \zeta_3)$,$y = y(\zeta_1, \zeta_2, \zeta_3)$,$z = z(\zeta_1, \zeta_2, \zeta_3)$.
+ 	В каждой точке пространства тогда определены вектора:
+ 	$$\mathbf{i}_i = \frac{\partial}{\partial \zeta^i} = \mathbf{e_a} \frac{\partial x^a}{\partial \zeta^i}.$$
+ 	Точнее в каждой точке $p$ пространства $M$ (которое мы должны, вообще говоря, считать дифференциальным многообразием) определенно соответствующее векторное пространство $\mathbf{T_p M}$, называемое касательным пространством. Вектора $\mathbf{i}_i (\zeta)$ образуют базис этого пространства в данной точке $p$ (которая задается локальными координатами $\zeta$).Вообще говоря, вектора $\mathbf{i}_i$ различны в каждых точках пространства и не обязаны иметь единичную длину или свойство ортогональности. Обозначим скалярное произведение таких векторов:
+ 	$$g_{ij} = (\mathbf{i}_i, \mathbf{i}_j)$$
+ 	\begin{defn}
+ 		Тензор $g_{ij}$ называется метрическим тензором.
+ 	\end{defn}
+ 	
+ 	Разложим аналогично с декартовой системой произвольные вектора $\mathbf{V,W}$ по базису $\mathbf{i}$. Для скалярного произведения получим:
+ 	$$(\mathbf{V,W)} = (\mathbf{i}_i, \mathbf{i}_k) V^i W^k = g_{ik} V^i W^k = V_i W^i,$$
+ 	где в последнем равенстве мы определили \textit{ковариантные} компоненты $V_i = g_{ij} V^j$ вектора $\mathbf{V}$ ($V^k$ называются \textit{контравариантными} компонентами). Такое определение согласуется с известным вам определением ковариантных и контравариантных компонент из курса линейной алгебры. Проводя дальнейшую аналогию, ковариантные компоненты $V_k$ мы можем рассматривать как  компоненты некоторой линейной формы (линейного функционала). Действие такой 1-формы на произвольной вектор (присоединенный к той же точке) представляет собой скалярное произведение:
+ 	$${V}(\cdot) = (\mathbf{V}, \cdot)$$
+ 	
+ 	Все линейные формы присоединенные к точке $\zeta^i$ образуют векторное пространство (двойственное к пространству векторов).   
+ 	
+ 	В дальнейшем мы будем фокусироваться на системах криволинейных координат где метрический тензор имеет простой (диагональный) вид:
+ 	$$(\mathbf{e}_i, \mathbf{e}_j) = h^2_i \delta_{ij}$$ 
+ 	Коэффициенты $h_i$, нормы базисных векторов, носят название коэффициентов Ламе.
+ 	В таких системах можно ввести ортонормированный базис\footnote{\textbf{Важно}: зависимость векторов $e_i$ от точки пространства не исчезает}.:
+ 	$$ \mathbf{e}_i = \frac{\mathbf{i}_i}{(\mathbf{i}_i,\mathbf{i}_i)}$$
+ 	
+ 	
+ 	В таком базисе скалярное произведение выглядит особенно просто:
+ 	$$(\mathbf{V}, \mathbf{W}) = \bar{V}^k \bar{W}^k = \bar{V}_k \bar {W}^k,$$
+ 	где $\bar{x}^k$ - разложения векторов по ортонормированному базису. Это обозначение мы будем также использовать и далее.
+ 	
+ 	Рассмотрим некоторую функцию $S$, определенную в каждой точке нашего пространства(на нашем многообразии). В каждой точке полный дифференциал имеет вид:
+ 	$$dS = \frac {\partial S}{\partial \zeta^i} d \zeta^i$$
+ 	и является линейной формой, а точнее, дифференциальной 1-формой. Как и для всякой линейной формы(линейного функционала) аргументом выступает элементы ВП, а областью определения - поле скаляров этого векторного пространства.
+ 	Дифференциалы $d \zeta^i$ образуют базис на пространстве 1-форм, действие форм на любой вектор определяется соотношением на базисных векторах:
+ 	$$d \zeta^k (\mathbf{i}_j) = \delta^k_j$$ 
+ 	и линейностью для продолжения. Частные производные $ \partial_{\zeta^i} S$ являются компонентами 1-формы $dS$ в естественном базисе $d \zeta^i$.
+ 	
+ 	На векторе $\delta \boldmath{\zeta}= i_k \delta \zeta^k$ - малом смещении $\delta \zeta^i$ полный дифференциал действует следующим образом:
+ 	$$dS (\delta \mathbf{\zeta}) = \frac {\partial S}{\partial \zeta^i} d \zeta^i (i_k \delta \zeta^k) = \frac {\partial S}{\partial \zeta^i} \delta \zeta^i \approx S(\zeta + \delta\zeta) - S(\zeta)$$
+ 	Т.е. $dS(\delta \zeta)$ и есть $dS$ в привычном понимании.
+ 	
+ 	В системах с диагональным метрическим тензорам можно ввести другой базис 1-форм, определив его действием на единичные базисные вектора:
+ 	$$f^k (\mathbf{e_j}) = \delta^k_j$$
+ 	Откуда в силу линейности:
+ 	$$f^k = h_k d \zeta^k$$ 
+ 	Действие линейной формы $\hat{w} = w_k d \zeta^k$ в точке $\zeta$ на вектор $\mathbf{V}$, присоединенный к той же точке $\zeta$, задается следующим образом:
+ 	$$ \hat{w} (\mathbf{V}) = w_k d \zeta^k (\mathbf{i}_j V^j) = w_k V^k = h_k \bar{w}_k h^{-1}_k \bar{V}^k= \bar{w}_k \bar{V}^k $$
+ 	Это показывает что компоненты 1-формы таким образом можно рассматривать как ковариантные компоненты некоторого вектора, а действие формы задавать через скалярное произведение с этим вектором $\mathbf i_i w^i = \mathbf{e_i} \hat{w}^i$.
+ 	
+ 	\begin{defn}Градиентом функции\end{defn}$S$ будем называть полный дифференциал $dS$ отнесенный к базису $f^k$:
+ 	$$dS = \frac{\partial S}{\partial \zeta^k} d \zeta^k= (\frac{1}{h_k} \frac{\partial S}{\partial \zeta^k}) f^k = \overline{\nabla S}_k f^k$$
+ 	Градиент функции $S$, или другими словами полная производная $S$, это линейный функционал векторов касательного пространства $T_p M$ в $\mathbb{R}$:
+ 	$$dS(V) = V^l \frac{\partial S}{\partial \zeta^k} d \zeta^k (\mathbf{i}_l) = V^k \frac{\partial S}{\partial \zeta^k}$$
+ 	
+ 	
+ 	\begin{defn}Внешней алгеброй ВП \end{defn}$V$ называется алгебра порожденная элементами $\{1, e_i\}$, со следующими определяющими соотношениями:
+ 	\begin{itemize}
+ 		\item$ e_i \wedge e_j = - e_j \wedge e_i$
+ 		\item $e_i \wedge 1 = e_i$
+ 	\end{itemize}
+ 	
+ 	\begin{defn}Дифференциальной $k$-формой\end{defn} на $\mathbb{R}^n$ будем  называть объекты вида:
+ 	\begin{equation}
+ 	\label{form}
+ 	\omega = \sum_{1\leq i_1 < i_2 <\dots < i_k \leq n} f_{i_1, i_2, \dots, i_k} (x^1, \dots) dx^{k_1} \wedge dx^{k_2} \wedge \dots \wedge d x^{i_k},
+ 	\end{equation} 
+ 	где $f$ - гладкие функции, $dx^i$ - дифференциалы координаты $x^i$. При смене базиса это представление меняет форму.
+ 	
+ 	\begin{defn}Внешней производной \end{defn} для формы\footnote{Здесь $I$ - мультииндекс, и под $dx^I$ поднимается внешнее произведение всех дифференциалов}
+ 	$$\phi = g dx^I $$
+ 	называется форма:
+ 	$$ d\phi = \frac{\partial g}{\partial x^i} dx^i \wedge dx^I$$.
+ 	
+ 	
+ 	
+ 	\textit{Оператор Ходжа} $*$ переводит формы ранга $k$ в формы ранга $n-k$.
+ 	Сначала определим действие на произвольном внешнем произведении базисных форм:
+ 	$$* (dx^{i_1} \wedge \dots \wedge d x^{i_k}) = \frac{\sqrt{g}}{(n-k)!} g^{i_1 j_1} \dots g^{i_k j_k} \epsilon_{j_1 \dots j_n} dx^{j_{k+1}} \wedge \dots \wedge dx ^ {j_n}$$
+ 	Теперь пусть $\alpha$ - произвольная форма, раскладывая её в нашем базисе (упраженение - покажите что эта форма записи согласуется с определением (\ref{form})):
+ 	$$ \alpha = \frac{1}{k!} \alpha_{i_1, \dots i_k} dx^{i_1} \wedge \dots \wedge dx^{i_k}$$
+ 	и обозначив\footnote{Важно: индексы подняты}:
+ 	$$ \beta_{i_{k+1} \dots i_n}= \frac{\sqrt{g}}{k!} \alpha^{i_1\dots i_k} \epsilon_{i_1\dots i_n}$$
+ 	определим оператор следующим образом:
+ 	$$(*\alpha) = \frac{1}{(n-k)!} \beta dx^{i_{k+1}} \wedge \dots \wedge dx^{i_n}$$
+ 	
+ 	Займемся теперь определением дивергенции векторного поля $\mathbf{V} = i_k V^k$. Рассмотрим 1-форму $V$, соответствующую векторному полю$\mathbf{V}$:
+ 	$$V = V_i d \zeta^i = g_{ik} V^k d \zeta^i,$$
+ 	применим к ней оператор Ходжа:
+ 	$$*V = \frac{1}{2} \sqrt{g} \epsilon_{ijk} V^k d \zeta^i \wedge d \zeta^j,$$
+ 	где $g = det (g_{ij})$ и  возьмем внешнюю производную от получившейся 2-формы:
+ 	$$d(*V) = \frac{1}{2}  \epsilon_{ijk} \frac{\partial}{\partial \zeta^l} 
+ 	\left(V^k \sqrt{g}\right) d \zeta^l \wedge d \zeta^i \wedge d \zeta^j$$
+ 	Отметив, что:
+ 	$$ d\zeta^l \wedge d \zeta^i \wedge d \zeta^j = \epsilon_{lij} d \zeta^1 \wedge d \zeta^2 \wedge d \zeta^3,$$
+ 	получим:
+ 	$$d(*V) = \frac{\partial}{\partial \zeta^l} 
+ 	\left(V^k \sqrt{g}\right) d \zeta^1 \wedge d \zeta^2 \wedge d \zeta^3$$
+ 	Полученная 3-форма $d(*V)$,отнесенная к канонической форме объема $f^1 \wedge f^2 \wedge f^3$ является \textit{дивергенцией векторного поля V}:
+ 	$$ \mathbf{div} \mathbf{V} = \frac{1}{h_1 h_2 h_3} \partial_{\zeta^k} (h_1 h_2 h_3 \frac{\hat{V}^k}{h_k})$$ 
+ 	
+ 	Поменяв порядок операций, построим циркуляцию векторного поля. Сначала возьмем внешнюю производную:
+ 	$$dV = \frac{\partial}{\partial \zeta^k} \left(g_{ij} V^j\right) d \zeta^k \wedge d \zeta^i,$$
+ 	и к полученной 2-форме применим оператор Ходжа:
+ 	$$*(dV) = \sqrt{g}g^{kl}g^{im} \frac{\partial}{\partial \zeta^k} (g_{ij} V^j) \epsilon_{lmn} d \zeta^n$$
+ 	В системах Ламе, компоненты полученной 1-формы в базисе $f^i$ совпадают с обычным определением циркуляции:
+ 	$$*(dV) = h_1 h_2 h_3 h^{-2}_k h^{-2}_i \epsilon_{kin} \frac{\partial}{\partial \zeta^k} (h_i V^i) h^{-1}_n f^n = [\mathbf{\nabla}, \mathbf{V}]f^n$$
+ 	После упрощения:
+ 	$$[\mathbf{\nabla}, \mathbf{V}] = \frac{h_n}{h_1 h_2 h_3} \epsilon_{kin} \partial_{\zeta^k} (h_k \hat{V}^k)$$.
+ 	
+ 	\begin{example}
+ 		
+ 		
+ 		Рассмотрим сферическую систему координат $(r, \theta, \phi)$, введенную обычным образом:
+ 		\begin{align*}
+ 		x & = r \sin \theta \cos \phi \\
+ 		y &= r \sin \theta \sin \phi \\
+ 		z &= r \cos \theta \\
+ 		\end{align*}
+ 	\end{example}
+ 	Построим базисные вектора:
+ 	$$ 
+ 	\mathbf{i}_r = \begin{pmatrix}
+ 	\sin \theta \cos \phi \\
+ 	\sin \theta \sin \phi \\
+ 	\cos \theta\\
+ 	\end{pmatrix},
+ 	\mathbf{i}_{\theta} =\begin{pmatrix}
+ 	r \cos \theta \cos \phi \\
+ 	r \cos \theta \sin \phi \\
+ 	-r \sin \theta\\
+ 	\end{pmatrix},
+ 	\mathbf{i}_{\phi} =\begin{pmatrix}
+ 	- r \sin \theta \sin \phi \\
+ 	r \sin \theta \cos \phi \\
+ 	0\\
+ 	\end{pmatrix};
+ 	$$
+ 	и вычислим по ним коэффиценты Ламе. $h_r = 1. h_\theta = r, h_\phi = r \sin \theta$.
+ 	Каноническая форма объема тогда примет следующий вид:
+ 	$$f^r \wedge f^\theta \wedge f^\phi = r^2 \sin \theta dr \wedge d \theta \wedge d \phi$$.
+ 	
+ 	
+ 	\newpage
+ 	{\centering
+ 		\section*{Листок - 2}}
+ 	\begin{enumerate}
+ 		\item Найдите значения $\omega$ на указанных векторах:
+ 		\begin{enumerate}
+ 			\item $\omega = x^2 dx^1$ на векторе $\zeta = (1,2,3)$
+ 			\item $\omega = d x^1 \wedge d x^3 + dx^1 \wedge dx^2 $ на паре векторов $\zeta_1, \zeta_2$
+ 		\end{enumerate}
+ 		\item Образуют ли формы ранга $k$ векторное пространство? Какой размерности?
+ 		\item Пользуясь определением $\wedge$ покажите, что для форм $\omega, \eta$ рангов $k,l$ верно $\omega \wedge \eta = (-1)^{kl} \eta \wedge \omega$
+ 		\item Любая ли 1-форма является дифференциалом? 
+ 		\item Как преобразуются координаты 1-форм при гладких замене координат?
+ 		\item Покажите что для внешнего произведения $\omega^k \wedge \omega^k = 0$ при $k=1$. Верно ли это для $k>1$?
+ 		\item Вычислите коэффициенты Ламе для параболической системы координат. Выпишите в явном виде операторы дивергенции, ротора, градиента
+ 		\item Вычислите коэффициенты Ламе для цилиндрической системы координат. Выпишите в явном виде операторы дивергенции, ротора, градиента.
+ 		\item Под оператором Лапласа $d(*dS)$ понимаем дивергенцию градиента. Получите общий вид в системах Ламе, предъявите явную запись оператора в сферических координатах.
+ 		
+ 		\vspace{\fill}
+ 		\textit{Задача 9 - обязательная. Листочек считается сданным если сдано 5 задач из 8 и 9 задача в срок до 1 ноября 2018}
+ 		
+ 	\end{enumerate}
+ 	\newpage
+ 	\section{Напоминания из прошлой лекции}
+ 	\begin{example} Внешнее произведение форм $\omega = x^2 dx^1 \wedge dx^3 + dx^2 \wedge dx^4$ и $\eta = (x^1+1)dx^2 \wedge dx^4$
+ 		\begin{multline*}
+ 		\omega \wedge \eta = x^2 (x^1+1)dx^1 \wedge dx^3 \wedge dx^2 \wedge dx^4 + (x^1+1)dx^1\wedge dx^2 \wedge dx^2 \wedge dx^4 =\\=
+ 		-x^2(x^1+1) dx^1 \wedge dx^2 \wedge dx^3 \wedge dx^4
+ 		\end{multline*}
+ 	\end{example}
+ 	\begin{example}
+ 		Внешний дифференциал формы $\omega = (x^1+x^3 x^3) dx^1 \wedge dx^2$:
+ 		\begin{equation*}
+ 		d\omega = dx^1 \wedge dx^1 \wedge dx^2 + 2x^3 dx^3\wedge dx^1 \wedge dx^2 = 2x^3 dx^1\wedge dx^2 \wedge dx^3
+ 		\end{equation*}
+ 	\end{example}
+ 	\section{Интегрирование форм}
+ 	Параметризуем $k-$многообразие $\Omega_k \subset R^d$ с помощью $\tau^1, \dots, t^k:$
+ 	\begin{gather}
+ 	\xi^1 = \xi^1(\tau^1, \dots, \tau^k)\\	
+ 	\dots \\
+ 	\xi^d = \xi^d(\tau^1, \dots, \tau^k)\\
+ 	\end{gather}
+ 	Для $\Omega_k$ при такой параметризации существует касательное пространство со следующим базисом:
+ 	\begin{equation*}
+ 	\mathbf{t}_i = \mathbf{i}_1 \frac{\partial \xi^1}{\partial \tau^i} + \dots + \mathbf{i}_d \frac{\partial \xi^d}{\partial \tau^i}
+ 	\end{equation*}
+ 	Вектор $\mathbf{t}_i$ - касательный к кривой на $\Omega_k$, полученный варьированием одного параметра $\tau_i$ при фиксированных остальных. Выбор порядка векторов определяет относительную(по отношению к исходному многообразию) ориентацию.
+ 	\begin{defn}
+ 		\label{integraldef}
+ 		\begin{equation}
+ 		\int_{\Omega_k}  \ ^{(k)} \omega  = \int d \tau^1 \dots \int d \tau^k \omega(\mathbf{t}_1, \dots \mathbf{t}_k)
+ 		\end{equation}
+ 	\end{defn}
+ 	Левый верхний индекс означает здесь и далее явно указывает что это $k$-форма.
+ 	
+ 	
+ 	
+ 	\begin{example}Рассмотрим 1-мерное многообразие $M$ вложенное в $\mathbb{R}^3$, параметризованное следующим образом:
+ 		
+ 		$$M : (3t, t^2, 5-t), t \in [0;2]$$
+ 		и заданную 1-форму: $\omega = 2x^2 dx^1 - x^1 x^3 dx^2 + dx^3$.
+ 	\end{example}
+ 	Вычислим интеграл от этой формы по кривой:
+ 	
+ 	\begin{equation*}
+ 	\int_M \omega = \int_0^2 \begin{pmatrix} 3 \\ 2t \\ -1 \end{pmatrix} dt = \int_0^2 (2x^2\cdot 3 - x^1 x^3\cdot 2t - 1) dt = \int_0^2(6t^3-24t^2-1)dt
+ 	\end{equation*}
+ 	
+ 	\begin{theorem}[Stockes]
+ 		\begin{equation}
+ 		\int_{\Omega_{p+1}} d(\ ^{(p)} \omega) = \int_{\partial\Omega_{p+1}} \ ^{(p)}\omega
+ 		\end{equation}
+ 	\end{theorem}
+ 	\begin{example}
+ 		Рассмотрим 2-многообразие $M$ вложенное в $\mathbb{R}^4$ следующим образом:	
+ 		\begin{gather}
+ 		M = (u^1, u^1 - u^2, 3 - u^1+u^1u^2, -3u^2)\\
+ 		u^1u^1+u^2+u^2<1
+ 		\end{gather}
+ 	\end{example}
+ 	Граница многообразия - кривая, описываемая одним параметром $t$. Граница параметризуется в $\mathbb{R}^4$ следующим образом:
+ 	\begin{equation}
+ 	\partial M = (\cos t, \cos t - \sin t, 3 - \cos t+ \cos t \sin t, -3 \sin t)
+ 	\end{equation}
+ 	Рассмотрим форму $\omega$:
+ 	\begin{gather}
+ 	\omega = x^3 x^3 dx^1 \\
+ 	d \omega = -2x^2 dx^1 \wedge d x^3
+ 	\end{gather}
+ 	и убедимся в правильности теоремы Стокса. Начнём с вычисления интеграла по многообразию от дифференциала. Вычислим базис в касательном пространстве:
+ 	\begin{equation}
+ 	t_1=\begin{pmatrix} 1 \\ 1 \\ -1 + u_2 \\ 0\end{pmatrix} \hspace{1cm} t_2 = \begin{pmatrix}
+ 	0\\ -1 \\ u_1 \\-3
+ 	\end{pmatrix}
+ 	\end{equation}
+ 	\begin{equation}
+ 	dx^1 \wedge dx^3 (t_1, t_2) = det \begin{vmatrix} 1 & 0 \\ u^2-1 & u_1\end{vmatrix}
+ 	\end{equation}
+ 	
+ 	\begin{equation}
+ 	\int_M d \omega = \int_{-1}^{1} \int_{-\sqrt{1-u_1^2}}^{\sqrt{1+u_1^2}} -2(3-u_1+u_1u_2)u_1 du_2 du_1 = \frac{\pi}{2}
+ 	\end{equation}
+ 	С другой стороны, вычислим касательный вектор к кривой $\partial M$
+ 	\begin{equation}
+ 	m = \begin{pmatrix} -\sin t \\ -\sin t - \cos t \\ \sin t + \cos 2t \\ -3 cos t\end{pmatrix}
+ 	\end{equation}
+ 	Тогда вычисляя интеграл от формы по границе многообразия:
+ 	
+ 	\begin{equation}
+ 	\int_{\partial M} \omega = \int_0^{2\pi} \omega(m) dt = \int_0^{2\pi} (3-\cos t + \cos t \sin t)^2 (-\sin t)dt = \frac{\pi}2
+ 	\end{equation}
+ 	
+ 	\newpage
+ 	{\centering
+ 		\section*{Листок - 3}}
+ 	\begin{enumerate}
+ 		
+ 		\item Покажите, что определение интеграла (Def \ref{integraldef}) не зависит от гладкой замены координат.
+ 		\item Покажите зависимость знака интеграла (Def \ref{integraldef}) от ориентации.
+ 		\item Вычислите интеграл от формы $\omega = x^2 dy \wedge dz + y^2 dz\wedge dx +z^2 dx \wedge dy$ по области $D: u,v \in (-1;1)^2$ на поверхности $x=u+v, y=u-v, z=uv$
+ 		\item Вычислите интеграл от формы $\omega = x^3 dx^1 \wedge dx^2 \wedge dx^4$ на многообразии $(u^2 u^3, u^1 u^1, 1-3u^2+u^3, u^1 u^2), u^1 u^1 + u^2 u^2 + u^3 u^3 < 1$
+ 		\item В $\mathbb{R}^4$ рассмотрим поверхность F, определяемую системой уравнений:
+ 		$$
+ 		x_1^2+x_2^2+x_3^2+x_4^2=2, x_1^2+x_2^2>x_3^2+x_4^2
+ 		$$
+ 		Найдите границу этой поверхности, покажите что это двумерный тор. Ориентируем $F$, выбирая в качстве положительной внешнюю нормаль шара. Определить индуцированную ориентацию на границе. Построить касательные плоскости.
+ 		\item Вычислить интеграл по границе $\partial F$ от формы:
+ 		$$x_3 x_4 dx_1\wedge dx_2 - x_2 x_4 \wedge dx_1 \wedge dx_3 + x_2 x_3 dx_1 \wedge dx_4 + x_1 x_4 dx_2 \wedge dx_3 -x_1x_3 dx_2 \wedge dx_4 +x_1 x_2 dx_3 \wedge dx_4$$
+ 		\item Форма $\omega$ называется \textit{замкнутой} если $d\omega=0$. Покажите что замкнутые $k-$формы образуют векторное прострнаство $Z^k$. Форма $\omega$ назывсется \textit{точной}, если $\exists \alpha: \omega = d \alpha$. Покажите, что точные формы образуют векторное пространство $B^k \subset Z^k$
+ 		\item Пусть диффернциальная форма $\omega_1$ - точная, а $\omega_2$ - замкнутая. Докажите, что $\omega_1 \wedge \omega_2$ - точная.
+ 		\item Докажите, что интеграл от замкнутой 1-формы по замкнутому пути равен нулю.
+ 		\item Предъявите форму $\alpha$ такую, что $d \alpha = \omega$, где
+ 		$$\omega = A dy \wedge dz + B dz\wedge dx + C dx \wedge dy \hspace{1cm} \partial_x A + \partial_y B + \partial_z C=0$$
+ 	\end{enumerate}
+ 	\vspace{\fill}
+ 	\textit{Листочек считается сданным если сдано 7 задач из 10 в срок до 28 ноября 2018}
+ 	\newpage
+ 	
+ 	\centering{
+ 		\section*{Листок - 4}}
+ 	\begin{enumerate}
+ 		\item Пользуясь ковариантной формой уравнений Максвелла получить уравнения Максвелла в терминах дифференциальных форм. Выписать формы плотности энергии.
+ 		\item Является ли вещественное проективное пространство $\mathbb{RP}^n$ ориентируемым? При каких $n$?
+ 		\item Докажите, что всякое комплексное аналитическое многообразие ориентируемо.
+ 		
+ 		\vspace{3ex}
+ 		\textit{Напоминание:} $f$ называется гомоморфизмом групп $(G_1,*),  (G_2, \times )$ если $f(a*b)= f(a) \times f(b)$
+ 		
+ 		\vspace{2ex}
+ 		Последовательность гомоморфизмов
+ 		$$
+ 		\dots \longrightarrow A_i \stackrel{\phi_i} {\longrightarrow} A_{i+1} \stackrel{\phi_{i+1}}{\longrightarrow} \dots
+ 		$$ называется полуточной, если $\im \phi_i \subset \ker \phi_{i+1}$ и точной если $\im \phi_i = \ker \phi_{i+1}$ для любого $i$.
+ 		
+ 		\item Рассмотрим последовательность гомоморфизмов:
+ 		$$
+ 		\dots \longrightarrow \Omega_{p-1} (X) \stackrel{d} {\longrightarrow} \Omega_p(X)  \stackrel{d}{\longrightarrow} \Omega_{p+1} (X) \stackrel{d}{\longrightarrow} \dots
+ 		$$
+ 		Покажите что она всегда полуточна. Приведите пример многообразия для которого эта последовательность точна.
+ 		
+ 		\vspace{3ex}
+ 		Факторпространство $H^P(X) := Z^p(X) / B^p (X)$
+ 		будем называть пространством когомологий де Рама.
+ 		\item Докажите,что $H^n (M) = 0$ если $n > \dim \text M$.
+ 		\item Доказать, что для любого многообразия $X$ когомологии де Рама $H^0(X)\simeq \mathbb{R}^q$, где $q$ - количество связных компонент $X$. Как это согласуется с результатами математического анализа?
+ 		\item Вычислить когомологии де Рама прямой $\mathbb{R}$
+ 		
+ 		\vspace{3ex}
+ 		Область $G \subset \mathbb{R}^n$ будем называть звездной относительно центра $x_0 \in G$, если вместе с каждой точкой $x \in G$ область содержит отрезок $[x_0, x]$
+ 		
+ 		\begin{theorem}[Пуанкаре]
+ 			Любая замкнутая форма $\omega \in \Omega^p(G)$ в звездной области $G$ точна.
+ 		\end{theorem}
+ 		Назовём отображения $g,f: X \mapsto Y$ гомотопными если существует отображение $F: X \times [0,1] \mapsto Y$, такое что $F(x,0) = f(x)$, $F(x,1) = g(x)$.
+ 		
+ 		Многообразия $X$ и $Y$ называются гомотопически эквивалентными, если существуют гладкие отображение $f: X \mapsto Y$ и $g: Y \mapsto X$, такие, что их композиции гомотопны тождественным отображениям.
+ 		
+ 		\vspace{3ex}
+ 		\item Доказать что гомотопическая эквивалентность сохраняет связность.
+ 		\item Стянуть (показать гомотопическую эквивалентность точке) $\mathbb{R}^n$
+ 		\item Показать что гиперплоскость без точки гомотопически эквивалентна $(n-1)$ мерной сфере.
+ 		
+ 		\item Найдите когомологии плоскости без одной точки, двумерного тора, двумерной сферы.  \textit{Замечание:} Здесь и далее под когомологиями понимаются когомологии де Рама
+ 		\item Найдите когомологии $\mathbb{RP}^2$.
+ 		\item Докажите что отображение 
+ 		$$ \omega \mapsto \int_{S^n} \omega$$
+ 		задает изоморфизм $H^n(S^n) \simeq R$.
+ 		\item Найдите когомологии $S^n$.
+ 		
+ 		\vspace{3ex}
+ 		Пусть компактное многообразие представлено в виде объединения двух открытых подмножеств $M = M_1 \cup M_2$, а $N= M_1 \cap M_2$ - их пересечение. Обозначим $\widetilde M = M_1 \sqcup M_2$ - их дизъюнктивное объединение. 
+ 		Естественное отображение $\widetilde M \mapsto M$ порождает гомоморфизм:
+ 		$$h: \Omega(M) \mapsto \Omega(\widetilde M) = \Omega (M_1) \oplus \Omega (M_2)$$
+ 		Естественные отображения $M_i \mapsto \widetilde M$ порождают ограничения $l: N \mapsto \widetilde M$, которые порождают гомоморфизмы:
+ 		$$l^i: \Omega(\widetilde M) \mapsto \Omega(M_i), l = l^2 - l^1$$
+ 		
+ 		\item Последовательность        $$0 \longrightarrow \Omega(M) \stackrel{h} {\longrightarrow} \Omega(M_1)  \oplus \Omega(M_2)  \stackrel{l}{\longrightarrow} \Omega(N) \longrightarrow 0 $$ точна.
+ 		
+ 		
+ 		
+ 	\end{enumerate}
+ 	\vspace{\fill}
+ 	
+ 	
+ 	
+ \end{document}
+ 
+\end{document}
+

@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\graphicspath{ {images/} }
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{fancyhdr}
+\usepackage[a4paper]{geometry}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Когомологии де Рама.}
+\theoremstyle{definition}
+\newtheorem{defn}{Def}
+\newtheorem{example}{Ex}
+ \newtheorem{theorem}{Th}
+ \DeclareMathOperator{\im}{im}
+\begin{document}
+
+
+\centering{
+	\subsection*{Листок - 5}}
+\begin{enumerate}
+	\item Пользуясь ковариантной формой уравнений Максвелла получить уравнения Максвелла в терминах дифференциальных форм. Выписать формы плотности энергии.
+	\item Является ли вещественное проективное пространство $\mathbb{RP}^n$ ориентируемым? При каких $n$?
+	\item Докажите, что всякое комплексное аналитическое многообразие ориентируемо.
+	
+	\vspace{3ex}
+\textit{Напоминание:} $f$ называется гомоморфизмом групп $(G_1,*),  (G_2, \times )$ если $f(a*b)= f(a) \times f(b)$
+
+\vspace{2ex}
+	Последовательность гомоморфизмов называется
+	$$
+	\dots \longrightarrow A_i \stackrel{\phi_i} {\longrightarrow} A_{i+1} \stackrel{\phi_{i+1}}{\longrightarrow} \dots
+	$$ называется полуточной, если $\im \phi_i \subset \ker \phi_{i+1}$ и точной если $\im \phi_i = \ker \phi_{i+1}$ для любого $i$.
+
+\item Рассмотрим последовательность гомоморфизмов:
+ 	$$
+ \dots \longrightarrow \Omega_{p-1} (X) \stackrel{d} {\longrightarrow} \Omega_p(X)  \stackrel{d}{\longrightarrow} \Omega_{p+1} (X) \stackrel{d}{\longrightarrow} \dots
+ $$
+ Покажите что она всегда полуточна. Приведите пример многообразия для которого эта последовательность точна.
+ 
+ \vspace{3ex}
+ Факторпространство $H^P(X) := Z^p(X) / B^p (X)$
+ будем называть пространством когомологий де Рама.
+ \item Докажите,что $H^n (M) = 0$ если $n > \dim \text M$.
+ \item Доказать, что для любого многообразия $X$ когомологии де Рама $H^0(X)\simeq \mathbb{R}^q$, где $q$ - количество связных компонент $X$. Как это согласуется с результатами математического анализа?
+ \item Вычислить когомологии де Рама прямой $\mathbb{R}$
+ 
+ \vspace{3ex}
+ Область $G \subset \mathbb{R}^n$ будем называть звездной относительно центра $x_0 \in G$, если вместе с каждой точкой $x \in G$ область содержит отрезок $[x_0, x]$
+ 
+ \begin{theorem}[Пуанкаре]
+ 	Любая замкнутая форма $\omega \in \Omega^p(G)$ в звездной области $G$ точна.
+ \end{theorem}
+ Назовём отображения $g,f: X \mapsto Y$ гомотопными если существует отображение $F: X \times [0,1] \mapsto Y$, такое что $F(x,0) = f(x)$, $F(x,1) = g(x)$.
+ 
+ Многообразия $X$ и $Y$ называются гомотопически эквивалентными, если существуют гладкие отображение $f: X \mapsto Y$ и $g: Y \mapsto X$, такие, что их композиции гомотопны тождественным отображениям.
+ 
+ \vspace{3ex}
+ \item Доказать что гомотопическая эквивалентность сохраняет связность.
+ \item Стянуть (показать гомотопическую эквивалентность точке) $\mathbb{R}^n$
+ \item Показать что гиперплоскость без точки гомотопически эквивалентна $(n-1)$ мерной сфере.
+
+ \item Найдите когомологии плоскости без одной точки, двумерного тора, двумерной сферы.  \textit{Замечание:} Здесь и далее под когомологиями понимаются когомологии де Рама
+ \item Найдите когомологии $\mathbb{RP}^2$.
+ \item Докажите что отображение 
+ $$ \omega \mapsto \int_{S^n} \omega$$
+ задает изоморфизм $H^n(S^n) \simeq R$.
+ \item Найдите когомологии $S^n$.
+
+
+ 
+ 
+
+\end{enumerate}
+\vspace{\fill}
+
+
+
+\end{document}

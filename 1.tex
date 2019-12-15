@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{fancyhdr}
+\usepackage[a5paper]{geometry}
+\pagestyle{fancy}
+\fancyhf{}
+\begin{document}
+Множество G с заданной на нем бинарной операцией $*: G \times G \to G$ называется \textit{группой} $(G, *)$ если:
+\begin{enumerate}
+    \item $\forall a,b,c \in G: a*(b*c) = (a*b)*c $
+    \item $\exists e \in G: \forall a \in G, a*e=e*a=a$
+    \item $\forall a \in G, \exists b: a*b = e$
+\end{enumerate}
+
+
+\subsection*{Доказать}
+
+\noindent0. Матрицы вида  $\left(\begin{matrix}a & b\\ -b & a\end{matrix}\right) a,b \in \mathbb{R}$ образуют группу относительно стандартного умножения матриц ($c_{ij} = a_{ik} b_{kj}$).
+
+\noindent1. Множество векторов ВП образуют группу относительно сложения.
+
+\noindent2. Определитель кососимметричной матрицы нечетного размера равен нулю.
+
+\noindent3. Пусть C = $\left(\begin{matrix}A & X\\ 0 & B\end{matrix}\right) A,X, B \in \mathbb{R}^{n \times n}$. Докажите, что $\det С = \det A \det B$
+
+\noindent4. $\det \text{adj} A = (\det A)^{n-1}$ [adj - присоединенная матрица]
+\subsection*{Вычислить}
+
+\noindent5. $\det A$, если
+
+ a) $a_{ij} = \min(i,j)$
+ 
+ b) $a_{ij} = \max(i,j)$ 
+ 
+\noindent6.\ $ \begin{vmatrix}
+    1 & -1 &    &    & 0   \\
+    -1  & 1       & -1   &      &    \\
+      &       \ddots &           \ddots&     \ddots      &    \\
+      &         &           -1&          1 & -1\\
+        0  &         &           &          -1 & 1
+  \end{vmatrix}
+  $
+  
+\noindent7.\ $\partial_{ij} \det A$
+
+
+\end{document}
+\textsl{}
