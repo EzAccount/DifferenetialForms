@@ -1,0 +1,73 @@
+ \documentclass{article}
+ \usepackage{amsmath,amsthm,amssymb}
+ \usepackage{mathtext}
+ \usepackage[T1,T2A]{fontenc}
+ \usepackage[utf8]{inputenc}
+ \usepackage[english,russian]{babel}
+ \usepackage{fancyhdr}
+ \usepackage[a4paper]{geometry}
+ \pagestyle{fancy}
+ \fancyhf{}
+ \newtheorem{defn}{Def}
+ \newtheorem{example}{Ex}
+ \newtheorem{theorem}{Th}
+ \DeclareMathOperator{\im}{im}
+ 
+ \begin{document}
+ 	
+ 	\subsection*{Литература}
+ 	Базовая:
+ 	\begin{itemize}
+ 		\item Зорич В. А., Математический анализ, Том II.
+ 		\item Арнольд В. И., Математические методы классической механики. 
+ 		\item  W. Rudin, Principles of mathematical analysis
+ 	\end{itemize}
+ 	Продвинутая:
+ 	\begin{itemize}
+ 		\item С. П. Новиков, И. А. Тайманов, Современные геометрические структуры и поля.
+ 		\item Картан А., Дифференциальное исчисление. Дифференциальные формы.
+ 		\item H. Flanders, Differential forms and applications to the physical sciences
+ 		\item M. Spivak, Calculus on manifolds
+ 		\item Bishop, R.; Goldberg, S. I. (1980), Tensor analysis on manifolds
+ 	\end{itemize}
+ 	\newpage
+ 	Set G with binary operation $*: G \times G \to G$ is called a \textit{group} $(G, *)$ if:
+ 	\begin{enumerate}
+ 		\item $\forall a,b,c \in G: a*(b*c) = (a*b)*c $
+ 		\item $\exists e \in G: \forall a \in G, a*e=e*a=a$
+ 		\item $\forall a \in G, \exists b\in G: a*b = e$
+ 	\end{enumerate}
+ 	{\centering
+ 		\section*{Problem 	Set - 1}}
+ 	\begin{enumerate}
+ 		\item Prove that the set of matrices of form  $\left(\begin{matrix}a & b\\ -b & a\end{matrix}\right) a,b \in \mathbb{R}$ with standard multiplication ($c_{ij} = a_{ik} b_{kj}$) is a group.
+ 		\item Show that vectors of vector space with addition is a group.
+ 		\item Prove that determinant of skew-symmetric matrix of odd size is zero.
+ 		
+ 		\item Let C = $\left(\begin{matrix}A & X\\ 0 & B\end{matrix}\right) A,X, B \in \mathbb{R}^{n \times n}$. Prove that $\det С = \det A \det B$
+ 		
+ 		\item Prove that $\det \text{adj} A = (\det A)^{n-1}$ [adj - adjoint matrix]
+ 		
+ 		\item Evaluate  $\det A$, if
+ 		
+ 		a) $a_{ij} = \min(i,j)$
+ 		
+ 		b) $a_{ij} = \max(i,j)$ 
+ 		
+ 		\item Find $ \begin{vmatrix}
+ 		1 & -1 &    &    & 0   \\
+ 		-1  & 1       & -1   &      &    \\
+ 		&       \ddots &           \ddots&     \ddots      &    \\
+ 		&         &           -1&          1 & -1\\
+ 		0  &         &           &          -1 & 1
+ 		\end{vmatrix}
+ 		$
+ 		
+ 		\item Find $\frac{\partial} {\partial a_{ij}} \det A$
+ 	\end{enumerate}
+	
+ 	
+ \end{document}
+ 
+\end{document}
+
