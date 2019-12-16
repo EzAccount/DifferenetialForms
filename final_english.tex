@@ -66,8 +66,40 @@
  		\item Find $\frac{\partial} {\partial a_{ij}} \det A$
  	\end{enumerate}
 	
- 	
+ \newpage
+ 
+ 
+ \section{Some facts on Cartesian coordinates} Let $\{e_i\}$ be the basis. Here and later we use $(\cdot, \cdot), [\cdot, \cdot]$ for scalar and vector product; repeated index is a short notation for summation.
+ $$(e_i, e_j)=\delta_{ij}$$
+ $$[e_i, e_j] = \epsilon_{ijk}e_k$$
+ $$\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$$
+ $$V=e_i V^i_{(e_i)}$$
+ Index notation might be sometimes useful, for example:
+ \begin{align*}
+ [\mathbf{A}, [\mathbf{B},\mathbf{C}]] &= [e_i, [e_l, e_m]] A^i B^l C^m\\
+ &= [e_i, e_k] \epsilon_{klm} A^i B^l C^m \\
+ &= e_j \epsilon_{jik}\epsilon_{klm} A^i B^l C^m \\
+ &= e_j (\delta_{jl}\delta_{im} - \delta_{jm}\delta_{il}) A^i B^l C^m \\
+ &= \mathbf{B} (\mathbf{A}\cdot \mathbf{C}) - \mathbf{C} (\mathbf{A}\cdot \mathbf{B})\\
+ \end{align*}
+ \section{Curvilinear coordinates}
+Let  $x = x(\zeta_1, \zeta_2, \zeta_3)$,$y = y(\zeta_1, \zeta_2, \zeta_3)$,$z = z(\zeta_1, \zeta_2, \zeta_3)$ be three given maps.
+In each point of the space the following vectors are well defined:
+ $$\mathbf{i}_i = \mathbf{e_a} \frac{\partial x^a}{\partial \zeta^i}.$$
+ Furthermore, for each point $p$ of some space $M$ (which we siliently agreed to consider a differential manifold) a vector space is defined,  $\mathbf{T_p M}$, called tangent space. Vectors $\mathbf{i}_i (\zeta)$ form basis of this vector space in point  $p$ (the point is defined with its local coordinates $\zeta$). Vectors $\mathbf{i}_i$ might differ for different points, may not be unit or orthogonal. Let us introduce $g_{ij}$ which is just a scalar product of all basis vectors by pairs.
+ $$g_{ij} = (\mathbf{i}_i, \mathbf{i}_j)$$
+ \begin{defn}
+ 	Tensor  $g_{ij}$ is called metric tensor
+ \end{defn}
+ 
+ Let's represent arbitrary vectors, in the same way as we did in Cartesian coordinates,  $\mathbf{V,W}$ as sum of basis vectors $\mathbf{i}$ with coefficients.  For scalar product we obtain the following:
+ $$(\mathbf{V,W)} = (\mathbf{i}_i, \mathbf{i}_k) V^i W^k = g_{ik} V^i W^k = V_i W^i,$$
+ where the last equality defines \textit{covariant} components $V_i = g_{ij} V^j$ of vector $\mathbf{V}$ ($V^k$ is called \textit{contravariant} components). One may check that this definition agrees with the one that was provided in linear algebra course. Following the linear algebra logic covariant components $V_k$ can be viewed as a linear form (linear functional). The action of that form to the arbitrary vector (at the same point) is simply:
+ $${V}(\cdot) = (\mathbf{V}, \cdot)$$
+ 
+ All linear forms $\zeta^i$ forms a vector space (called dual to the vector space)   
+ 
+
+ 
  \end{document}
  
-\end{document}
-
